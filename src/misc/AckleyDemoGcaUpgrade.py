@@ -20,12 +20,12 @@ def objective(x, y):
 
 
 r_min, r_max = -32.768, 32.768
-xaxis = arange(r_min, r_max, 0.25)
-yaxis = arange(r_min, r_max, 0.25)
+xaxis = arange(r_min, r_max, 2)
+yaxis = arange(r_min, r_max, 2)
 x, y = meshgrid(xaxis, yaxis)
 results = objective(x, y)
 figure = plt.figure()
-axis = figure.gca( projection='3d')
+axis = plt.axes( projection='3d')
 
 axis.plot_surface(x, y, results, cmap='jet', shade= "false")
 plt.savefig(save_results_to + graph_name + '_surface.png', dpi = 300)

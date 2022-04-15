@@ -25,15 +25,14 @@ printTimer("Starting optuna import")
 import optuna
 printTimer("optuna import done")
 
-def objective(trial):
-    problem = Ackley()
+def objective(trial, problem):
     x = trial.suggest_float("x",-32.768, 32.768)
     y = trial.suggest_float("y",-32.768, 32.768)
     return problem.eval(x, y)
 
-def optuna_search():
+def optuna_search(problem):
     """A function to start the search."""
-    filename = "RandomForestClassifier_study.pkl"
+    filename = problem.name()+"_study.pkl"
 
     study = None
 
@@ -41,11 +40,11 @@ def optuna_search():
         study = joblib.load(filename)
         print("Study loaded.")
     else:
-        study = optuna.create_study(direction="minimize", sampler=optuna.samplers.CmaEsSampler())
+        study = optuna.create_study(direction=problem.direction(), sampler=optuna.samplers.CmaEsSampler())
         print("Study created.")
 
     for x in range(1):
-        study.optimize(objective, n_trials=100)
+        study.optimize(lambda trial: objective(trial, problem), n_trials=100)
         joblib.dump(study, filename)
         print("Study saved.")
 
@@ -68,4 +67,5 @@ def optuna_search():
 # print(p1.objective(1,1))
 print("test")
 
-optuna_search()
+problem = Ackley()
+optuna_search(problem)

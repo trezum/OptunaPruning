@@ -11,6 +11,9 @@ class Ackley(Problem):
   def __init__(self):
     pass
 
+  def direction(self):
+    return 'minimize'
+
   def name(self):
     return 'ackley'
 

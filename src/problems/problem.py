@@ -5,10 +5,10 @@ class Problem:
         pass
 
     def name(self):
-        return 'problem'
+        raise NotImplementedError
 
     def eval(x, y):
-        pass
+        raise NotImplementedError
 
     def draw(self):
         import matplotlib

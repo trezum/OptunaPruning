@@ -7,7 +7,7 @@ class Problem:
     def name(self):
         return 'problem'
 
-    def objective(x, y):
+    def eval(x, y):
         pass
 
     def draw(self):

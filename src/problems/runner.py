@@ -25,28 +25,30 @@ printTimer("Starting optuna import")
 import optuna
 printTimer("optuna import done")
 
-def optuna_objective(trial):
+def objective(trial):
     problem = Ackley()
     x = trial.suggest_uniform("x",-32.768, 32.768)
     y = trial.suggest_uniform("y",-32.768, 32.768)
-    return problem.objective(x, y)
+    return problem.eval(x, y)
 
 def optuna_search():
     printTimer("Starting search")
     filename = "Ackley_study.pkl"
     study = None
 
-    if path.exists(filename):
-        #study = joblib.load(filename)
-        print("Study loaded.")
-    else:
-        study = optuna.create_study(direction="maximize")
-        print("Study created.")
+    # if path.exists(filename):
+    #     #study = joblib.load(filename)
+    #     print("Study loaded.")
+    # else:
 
-    for x in range(100):
-        study.optimize(optuna_objective(), n_trials=10)
-        #joblib.dump(study, filename)
-        print("Study saved.")
+
+    study = optuna.create_study(direction="maximize")
+    print("Study created.")
+
+    #for x in range(100):
+    study.optimize(objective, n_trials=10)
+    #joblib.dump(study, filename)
+    print("Study saved.")
 
     # joblib.dump(study, filename)
     print("Optuna search done...")

@@ -4,7 +4,10 @@ import matplotlib.pyplot as plt
 import os
 
 
-class problem:
+class Problem:
+
+    def __init__(self):
+        pass
 
     def name(self):
         return 'problem'

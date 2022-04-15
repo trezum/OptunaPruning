@@ -4,10 +4,13 @@ from numpy import cos
 from numpy import e
 from numpy import pi
 
-from problem import problem
+from problems.Problem import Problem
 
-class ackley(problem):
+class Ackley(Problem):
   
+  def __init__(self):
+    pass
+
   def name(self):
     return 'ackley'
 

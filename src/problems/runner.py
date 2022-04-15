@@ -4,6 +4,8 @@ from os import path
 import joblib
 from AckleyProblem import Ackley
 from BoothProblem import Booth
+from BukinN6Problem import BukinN6
+from BealeProblem import Beale
 
 start = None
 end = None
@@ -63,6 +65,9 @@ list = []
 
 # list.append( Ackley() )
 # list.append( Booth() )
+#list.append( BukinN6() )
+list.append( Beale() )
+
   
 for problem in list:
     problem.draw()

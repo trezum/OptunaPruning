@@ -1,3 +1,4 @@
+from numpy import fabs
 from numpy import exp
 from numpy import sqrt
 from numpy import cos
@@ -6,7 +7,7 @@ from numpy import pi
 
 from Problem import Problem
 
-class Booth(Problem):
+class Beale(Problem):
   
   def __init__(self):
     pass
@@ -15,19 +16,19 @@ class Booth(Problem):
     return 'minimize'
 
   def name(self):
-    return 'booth'
+    return 'Beale'
   
   def xmax(self):
-      return 10
+      return -4.5
   
   def xmin(self):
-    return -10
+    return -4.5
   
   def ymax(self):
-    return 10
+    return 4.5
   
   def ymin(self):
-    return -10
+    return -4.5
 
   def eval(self, x, y):
-    return (x + 2*y - 7)**2 + (2*x + y - 5)**2
+    return (1.5 - x + x*y)**2 + (2.25 - x + x*y**2)**2 + (2.625 - x + x*y**3)**2

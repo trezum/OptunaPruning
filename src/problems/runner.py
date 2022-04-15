@@ -1,20 +1,22 @@
-print('Starting')
-
 import time
-
 from AckleyProblem import Ackley
+start = None
+end = None
 
-start = time.time()
-
-end = time.time()
-print('Imported {}'.format(end-start))
-
-start = time.time()
+def printTimer(message):
+    global start
+    global end
+    if start == None:
+        start = time.time()
+        print(message)
+        return
+    else:
+        end = time.time()
+        print(message+' {}'.format(end-start))
+        start = end   
+    
+printTimer("Starting")
 p1 = Ackley()
-end = time.time()
-print('Ackley created {}'.format(end-start))
-
-start = time.time()
+printTimer("AckleyCreated")
 p1.draw()
-end = time.time()
-print('Done {}'.format(end-start))
+printTimer("Done")

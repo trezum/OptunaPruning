@@ -1,10 +1,9 @@
 import time
+import os
 from os import path
-
-
 import joblib
-
 from AckleyProblem import Ackley
+from BoothProblem import Booth
 
 start = None
 end = None
@@ -26,13 +25,16 @@ import optuna
 printTimer("optuna import done")
 
 def objective(trial, problem):
-    x = trial.suggest_float("x",-32.768, 32.768)
-    y = trial.suggest_float("y",-32.768, 32.768)
+    x = trial.suggest_float("x", problem.xmin(), problem.xmax())
+    y = trial.suggest_float("y", problem.ymin(), problem.ymax())
     return problem.eval(x, y)
 
 def optuna_search(problem):
-    """A function to start the search."""
-    filename = problem.name()+"_study.pkl"
+    save_results_to = os.path.dirname(os.path.abspath(__file__)) + '/pickels/'
+    if not os.path.exists(save_results_to):
+        os.makedirs(save_results_to)
+
+    filename = save_results_to + problem.name()+"_study.pkl"
 
     study = None
 
@@ -40,11 +42,11 @@ def optuna_search(problem):
         study = joblib.load(filename)
         print("Study loaded.")
     else:
-        study = optuna.create_study(direction=problem.direction(), sampler=optuna.samplers.CmaEsSampler())
+        study = optuna.create_study(direction=problem.direction(), sampler=optuna.samplers.CmaEsSampler(restart_strategy="ipop",))
         print("Study created.")
 
     for x in range(1):
-        study.optimize(lambda trial: objective(trial, problem), n_trials=100)
+        study.optimize(lambda trial: objective(trial, problem), n_trials=1000)
         joblib.dump(study, filename)
         print("Study saved.")
 
@@ -57,15 +59,13 @@ def optuna_search(problem):
     print("Best value:")
     print(study.best_value)
 
+list = [] 
 
-# printTimer("Starting")
-# p1 = Ackley()
-# printTimer("AckleyCreated")
-# p1.draw()
-# printTimer("Done")
+# list.append( Ackley() )
+# list.append( Booth() )
+  
+for problem in list:
+    problem.draw()
 
-# print(p1.objective(1,1))
-print("test")
-
-problem = Ackley()
-optuna_search(problem)
+for problem in list:
+    optuna_search(problem)

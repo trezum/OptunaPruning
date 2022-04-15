@@ -1,6 +1,7 @@
 # Project Specific
 *.png
 *poetry.lock
+*.pkl
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

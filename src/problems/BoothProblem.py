@@ -6,7 +6,7 @@ from numpy import pi
 
 from Problem import Problem
 
-class Ackley(Problem):
+class Booth(Problem):
   
   def __init__(self):
     pass
@@ -15,20 +15,19 @@ class Ackley(Problem):
     return 'minimize'
 
   def name(self):
-    return 'ackley'
+    return 'booth'
   
   def xmax(self):
-      return 5
+      return 10
   
   def xmin(self):
-    return -5
+    return -10
   
   def ymax(self):
-    return 5
+    return 10
   
   def ymin(self):
-    return -5
+    return -10
 
   def eval(self,x, y):
-    return -20.0 * exp(-0.2 * sqrt(0.5 * (x**2 + y**2)))-exp(0.5 * (cos(2 * 
-    pi * x)+cos(2 * pi * y))) + e + 20
+    return (x + 2*y - 7)**2 + (2*x + y - 5)**2

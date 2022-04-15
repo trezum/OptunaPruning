@@ -4,7 +4,7 @@ from numpy import cos
 from numpy import e
 from numpy import pi
 
-from problems.Problem import Problem
+from Problem import Problem
 
 class Ackley(Problem):
   

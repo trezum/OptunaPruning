@@ -1,6 +1,4 @@
 
-
-
 class Problem:
 
     def __init__(self):
@@ -9,7 +7,7 @@ class Problem:
     def name(self):
         return 'problem'
 
-    def objective(self, x, y):
+    def objective(x, y):
         pass
 
     def draw(self):
@@ -29,7 +27,6 @@ class Problem:
         yaxis = arange(r_min, r_max, 0.25)
         x, y = meshgrid(xaxis, yaxis)
         results = self.objective(x, y)
-        figure = plt.figure()
         axis = plt.axes( projection='3d')
 
         axis.plot_surface(x, y, results, cmap='jet', shade= "false")

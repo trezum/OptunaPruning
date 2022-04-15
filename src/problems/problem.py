@@ -6,7 +6,7 @@ import os
 
 class problem:
 
-    def name():
+    def name(self):
         return 'problem'
 
     def objective(x, y):

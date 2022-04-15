@@ -4,11 +4,11 @@ from numpy import cos
 from numpy import e
 from numpy import pi
 
-from problems.problem import problem
+from problem import problem
 
 class ackley(problem):
   
-  def name():
+  def name(self):
     return 'ackley'
 
   def objective(x, y):

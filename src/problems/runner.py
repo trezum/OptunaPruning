@@ -2,8 +2,10 @@ print('Starting')
 
 import time
 
+from AckleyProblem import Ackley
+
 start = time.time()
-import Ackley as Ackley
+
 end = time.time()
 print('Imported {}'.format(end-start))
 

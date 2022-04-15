@@ -9,7 +9,7 @@ class problem:
     def name(self):
         return 'problem'
 
-    def objective(x, y):
+    def objective(self, x, y):
         pass
 
     def draw(self):
@@ -19,8 +19,8 @@ class problem:
             os.makedirs(save_results_to)
         
         r_min, r_max = -32.768, 32.768
-        xaxis = arange(r_min, r_max, 2)
-        yaxis = arange(r_min, r_max, 2)
+        xaxis = arange(r_min, r_max, 0.25)
+        yaxis = arange(r_min, r_max, 0.25)
         x, y = meshgrid(xaxis, yaxis)
         results = self.objective(x, y)
         figure = plt.figure()

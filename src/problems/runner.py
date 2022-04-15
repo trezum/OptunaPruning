@@ -3,12 +3,12 @@ print('Starting')
 import time
 
 start = time.time()
-import Ackley as ack
+import Ackley as Ackley
 end = time.time()
 print('Imported {}'.format(end-start))
 
 start = time.time()
-p1 = ack()
+p1 = Ackley()
 end = time.time()
 print('Ackley created {}'.format(end-start))
 

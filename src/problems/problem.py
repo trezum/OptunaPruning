@@ -1,7 +1,4 @@
-from numpy import arange
-from numpy import meshgrid
-import matplotlib.pyplot as plt
-import os
+
 
 
 class Problem:
@@ -16,7 +13,13 @@ class Problem:
         pass
 
     def draw(self):
-        
+        import matplotlib
+        matplotlib.use('agg')
+        import matplotlib.pyplot as plt
+        from numpy import arange
+        from numpy import meshgrid
+        import os
+
         save_results_to = os.path.dirname(os.path.abspath(__file__)) + '/plots/' + self.name() + '/'
         if not os.path.exists(save_results_to):
             os.makedirs(save_results_to)

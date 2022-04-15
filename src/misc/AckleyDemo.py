@@ -5,6 +5,8 @@ from numpy import cos
 from numpy import e
 from numpy import pi
 from numpy import meshgrid
+import matplotlib
+matplotlib.use('agg')
 import matplotlib.pyplot as plt
 import os
 

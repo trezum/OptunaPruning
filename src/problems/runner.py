@@ -48,7 +48,7 @@ def optuna_search(problem):
         print("Study created.")
 
     for x in range(1):
-        study.optimize(lambda trial: objective(trial, problem), n_trials=1000)
+        study.optimize(lambda trial: objective(trial, problem), n_trials=100)
         joblib.dump(study, filename)
         print("Study saved.")
 
@@ -63,14 +63,14 @@ def optuna_search(problem):
 
 list = [] 
 
-# list.append( Ackley() )
-# list.append( Booth() )
-#list.append( BukinN6() )
+list.append( Ackley() )
+list.append( Booth() )
+list.append( BukinN6() )
 list.append( Beale() )
 
   
 for problem in list:
     problem.draw()
 
-for problem in list:
-    optuna_search(problem)
+# for problem in list:
+#     optuna_search(problem)

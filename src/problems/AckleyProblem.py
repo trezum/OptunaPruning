@@ -18,7 +18,7 @@ class Ackley(Problem):
     return 'ackley'
   
   def xmax(self):
-      return 5
+    return 5
   
   def xmin(self):
     return -5

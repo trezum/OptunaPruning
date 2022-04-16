@@ -41,12 +41,14 @@ class Problem:
         axis = plt.axes( projection='3d')
 
         axis.plot_surface(x, y, results, cmap='jet', shade= "false")
-        plt.savefig(save_results_to + self.name() + '_surface.png', dpi = 300)
+        plt.savefig(save_results_to + self.name() + '_surface.png', dpi = 500)
         plt.close()
 
         fig,ax=plt.subplots(1,1)
         #cp = ax.contourf(x,y,results,20, cmap=plt.cm.coolwarm,extend='both')
-        cp = ax.contourf(x,y,results, 20)
+        cp = ax.contourf(x,y,results, levels=20) #
+        #cp = ax.contourf(x,y,results, levels=[0,0.01,0.1,1,2,4,8,16,32,64,128,256]) #, levels=20
         fig.colorbar(cp)
-        plt.savefig(save_results_to + self.name() + '_contour.png', dpi = 300)
+        plt.savefig(save_results_to + self.name() + '_contour.png', dpi = 500)
         plt.close()
+        print(self.name() + ' drawn')

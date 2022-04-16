@@ -16,10 +16,10 @@ class BukinN6(Problem):
     return 'minimize'
 
   def name(self):
-    return 'BukinN6'
+    return 'bukin_n6'
   
   def xmax(self):
-      return -5
+    return -5
   
   def xmin(self):
     return -15

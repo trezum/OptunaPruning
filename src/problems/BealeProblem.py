@@ -16,10 +16,10 @@ class Beale(Problem):
     return 'minimize'
 
   def name(self):
-    return 'Beale'
+    return 'beale'
   
   def xmax(self):
-      return -4.5
+    return 4.5
   
   def xmin(self):
     return -4.5

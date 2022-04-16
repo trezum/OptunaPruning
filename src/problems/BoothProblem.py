@@ -18,7 +18,7 @@ class Booth(Problem):
     return 'booth'
   
   def xmax(self):
-      return 10
+    return 10
   
   def xmin(self):
     return -10

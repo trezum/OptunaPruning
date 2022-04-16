@@ -26,6 +26,8 @@ class Problem:
         import matplotlib
         matplotlib.use('agg')
         import matplotlib.pyplot as plt
+        from matplotlib import ticker
+        from matplotlib.colors import LogNorm
         from numpy import arange
         from numpy import meshgrid
         import os
@@ -45,8 +47,12 @@ class Problem:
         plt.close()
 
         fig,ax=plt.subplots(1,1)
+        #lvls = np.logspace(0,4,20)
         #cp = ax.contourf(x,y,results,20, cmap=plt.cm.coolwarm,extend='both')
-        cp = ax.contourf(x,y,results, levels=20) #
+        
+        #cp = ax.contourf(x,y,results, locator=ticker.LogLocator(base=10))
+        cp = ax.contourf(x,y,results, locator=ticker.MaxNLocator(nbins=20))
+        #cp = ax.contourf(x,y,results, levels=20)
         #cp = ax.contourf(x,y,results, levels=[0,0.01,0.1,1,2,4,8,16,32,64,128,256]) #, levels=20
         fig.colorbar(cp)
         plt.savefig(save_results_to + self.name() + '_contour.png', dpi = 500)

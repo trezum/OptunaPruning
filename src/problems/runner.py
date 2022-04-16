@@ -6,6 +6,7 @@ from AckleyProblem import Ackley
 from BoothProblem import Booth
 from BukinN6Problem import BukinN6
 from BealeProblem import Beale
+from GoldsteinPriceProblem import GoldsteinPrice
 
 start = None
 end = None
@@ -48,7 +49,7 @@ def optuna_search(problem):
         print("Study created.")
 
     for x in range(1):
-        study.optimize(lambda trial: objective(trial, problem), n_trials=100)
+        study.optimize(lambda trial: objective(trial, problem), n_trials=1000)
         joblib.dump(study, filename)
         print("Study saved.")
 
@@ -63,14 +64,14 @@ def optuna_search(problem):
 
 list = [] 
 
-list.append( Ackley() )
-list.append( Booth() )
-list.append( BukinN6() )
-list.append( Beale() )
-
+# list.append( Ackley() )
+# list.append( Booth() )
+# list.append( BukinN6() )
+# list.append( Beale() )
+list.append( GoldsteinPrice() )
   
 for problem in list:
     problem.draw()
 
-# for problem in list:
-#     optuna_search(problem)
+for problem in list:
+    optuna_search(problem)
